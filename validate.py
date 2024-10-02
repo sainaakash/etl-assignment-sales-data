@@ -36,17 +36,18 @@ def validate_data(df):
             raise ValueError("PHONE number length must be 12 characters after formatting (e.g., XXX-XXX-XXXX)")
 
     # List of valid state abbreviations (you can customize this list as needed)
-    valid_states = ['NY','CA','Victoria','NJ','CT','MA','PA','NSW','Queensland','BC',
+    """valid_states = ['NY','CA','Victoria','NJ','CT','MA','PA','NSW','Queensland','BC',
                     'Tokyo','NH','Quebec','Osaka','Isle of Wight','NV']
 
     # Function to fill null values with 'Unknown' only if valid
     def fill_invalid_states(state):
         if state in valid_states:
             return state
-        return 'Unknown'
+        return 'Unknown'"""
 
     # Apply the function to the STATE column
-    df['STATE'] = df['STATE'].fillna('Unknown').apply(fill_invalid_states)
+    #df['STATE'] = df['STATE'].fillna('Unknown').apply(fill_invalid_states)
+    df['STATE'] = df['STATE'].fillna('Unknown')
     
     return df
 
