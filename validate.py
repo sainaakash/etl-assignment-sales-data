@@ -7,7 +7,7 @@ def validate_data(df):
     required_fields = ['ORDERNUMBER', 'QUANTITYORDERED', 'PRICEEACH', 'ORDERDATE', 'STATUS', 'QTR_ID', 'MONTH_ID', 'YEAR_ID', 'PRODUCTLINE', 'MSRP', 'PRODUCTCODE', 'CUSTOMERNAME', 'PHONE', 'ADDRESSLINE1', 'CITY', 'COUNTRY', 'CONTACTLASTNAME', 'CONTACTFIRSTNAME', 'DEALSIZE', 'SALES']
     
     # Fields that are optional
-    optional_fields = ['ADDRESSLINE2', 'STATE', 'POSTALCODE', 'TERRITORY']
+    optional_fields = ['ADDRESSLINE2', 'POSTALCODE', 'TERRITORY', 'STATE']
     
     # Ensure required fields are present and non-empty
     for field in required_fields:
@@ -29,7 +29,14 @@ def validate_data(df):
         raise ValueError("ORDERDATE must be less than today")
     
     # Standardize PHONE format
-    df['PHONE'] = df['PHONE'].apply(standardize_phone)
+    if 'PHONE' in df.columns:  # Check if PHONE column exists
+        df['PHONE'] = df['PHONE'].apply(standardize_phone)
+        # Optional: Validate phone number length after standardization
+        if not df['PHONE'].str.len().eq(12).all():  # Check for 12 characters (3-digit area code, hyphen, 7-digit number)
+            raise ValueError("PHONE number length must be 12 characters after formatting (e.g., XXX-XXX-XXXX)")
+
+    # Fill null values in the "STATE" column with "in"
+    df['STATE'] = df['STATE'].fillna('Unknown')
     
     return df
 
