@@ -35,8 +35,18 @@ def validate_data(df):
         if not df['PHONE'].str.len().eq(12).all():  # Check for 12 characters (3-digit area code, hyphen, 7-digit number)
             raise ValueError("PHONE number length must be 12 characters after formatting (e.g., XXX-XXX-XXXX)")
 
-    # Fill null values in the "STATE" column with "in"
-    df['STATE'] = df['STATE'].fillna('Unknown')
+    # List of valid state abbreviations (you can customize this list as needed)
+    valid_states = ['NY','CA','Victoria','NJ','CT','MA','PA','NSW','Queensland','BC',
+                    'Tokyo','NH','Quebec','Osaka','Isle of Wight','NV']
+
+    # Function to fill null values with 'Unknown' only if valid
+    def fill_invalid_states(state):
+        if state in valid_states:
+            return state
+        return 'Unknown'
+
+    # Apply the function to the STATE column
+    df['STATE'] = df['STATE'].fillna('Unknown').apply(fill_invalid_states)
     
     return df
 
