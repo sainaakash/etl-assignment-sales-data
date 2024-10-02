@@ -1,3 +1,8 @@
 #environment files
 etl_env
+
+#Byte-compiled files
 __pycache__
+
+#output folder
+output
