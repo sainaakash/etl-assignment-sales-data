@@ -8,6 +8,6 @@
 pandas
 Flask-SQLAlchemy
 this can be done manually by making a requirements.txt file in the project directory and adding the necessary libraries names
-or can be done by using the command: echo pandas\\nFlask-SQLAlchemy > requirements.txt
+or can be done by using the command: echo pandas\\\nFlask-SQLAlchemy > requirements.txt
 6. then run the command: pip install -r requirements.txt 
 this will install all the libraries written in the requirements.txt
