@@ -6,3 +6,6 @@ __pycache__
 
 #output folder
 output
+
+# metadata file
+.DS_Store
