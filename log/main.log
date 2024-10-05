@@ -1,0 +1,9 @@
+2024-10-05 15:08:04,586 - INFO - CSV file read successfully.
+2024-10-05 15:08:04,590 - ERROR - There are missing or empty fields in the data: {'ADDRESSLINE2': 2521, 'STATE': 1486, 'POSTALCODE': 76, 'TERRITORY': 1074}
+2024-10-05 15:08:04,605 - INFO - Filled empty fields in STATE column with 'unknown'
+2024-10-05 15:08:04,606 - INFO - Dropped columns with empty fields (excluding STATE): ['ADDRESSLINE2', 'POSTALCODE', 'TERRITORY']
+2024-10-05 15:08:04,606 - INFO - Fields UPDATE_DATE and UPDATED_BY added.
+2024-10-05 15:08:04,608 - INFO - Data sorted successfully on the columns: STATE, CITY, ORDERNUMBER
+2024-10-05 15:08:04,617 - INFO - Data formatting completed
+2024-10-05 15:08:04,636 - INFO - Data output to CSV: ./output/high_sales.csv, ./output/low_sales.csv
+2024-10-05 15:08:04,653 - INFO - Data written to database at ./output/sales_data.db
