@@ -1,2 +1,2 @@
 pandas
-Flask-SQLAlchemy
+db-sqlite3

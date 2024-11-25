@@ -1,11 +1,8 @@
 #environment files
-etl_env
+etl_env/
 
 #Byte-compiled files
 __pycache__
-
-#output folder
-output
 
 # metadata file
 .DS_Store
